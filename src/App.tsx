@@ -1,8 +1,11 @@
 import "./App.css";
+import Navbar from "./components/Navbar";
+import HeroBanner from "./components/landing-page/HeroBanner";
 function App() {
     return (
         <>
-            <div className="w-4 h-4 bg-grey">Hello</div>
+            <Navbar />
+            <HeroBanner />
         </>
     );
 }
