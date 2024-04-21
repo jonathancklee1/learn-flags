@@ -1,6 +1,6 @@
-import Card from "../Card";
+import Card from "./Card";
 
-const Main = () => {
+const CardContainer = () => {
     return (
         <>
             <section className="px-8 py-16 bg-secondary-color text-primary-text">
@@ -19,4 +19,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default CardContainer;

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
     return (
         <>
@@ -8,8 +10,12 @@ const Navbar = () => {
                     {/* Links */}
                     <div className="">
                         <ul className="flex gap-4">
-                            <li className="cursor-pointer">Learn</li>
-                            <li className="cursor-pointer">Quiz Me</li>
+                            <Link to="/" className="cursor-pointer">
+                                Learn
+                            </Link>
+                            <Link to="/quiz" className="cursor-pointer">
+                                Quiz Me
+                            </Link>
                         </ul>
                     </div>
                 </nav>

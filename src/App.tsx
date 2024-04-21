@@ -1,15 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import HeroBanner from "./components/landing-page/HeroBanner";
-import Main from "./components/landing-page/Main";
+import LandingPage from "./components/landing-page/LandingPage";
+import QuizPage from "./components/quiz-page/QuizPage";
 function App() {
     return (
         <>
-            <Navbar />
-            <HeroBanner />
-            <Main />
-            <Footer />
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/quiz" element={<QuizPage />} />
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }
