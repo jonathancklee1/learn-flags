@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Reddit+Mono:wght@200..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-color: #6096ba;
+    --secondary-color: #e7ecef;
+    --primary-text: #8b8c89;
+}
+
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(158% + 1.3px);
+    height: 133px;
+}
+
+.wave .shape-fill {
+    fill: var(--secondary-color);
+}
