@@ -1,5 +1,5 @@
-import CardContainer from "../CardContainer";
-import Footer from "../Footer";
+import CardContainer from "../../components/CardContainer";
+import Footer from "../../components/Footer";
 
 const QuizPage = () => {
     return (

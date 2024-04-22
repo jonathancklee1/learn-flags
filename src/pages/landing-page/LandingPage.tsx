@@ -1,6 +1,6 @@
-import CardContainer from "../CardContainer";
-import Footer from "../Footer";
-import HeroBanner from "../HeroBanner";
+import CardContainer from "../../components/CardContainer";
+import Footer from "../../components/Footer";
+import HeroBanner from "../../components/HeroBanner";
 
 const LandingPage = () => {
     return (

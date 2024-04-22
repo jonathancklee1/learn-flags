@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <>
-            <header className="flex justify-between px-8 py-4 sticky top-0 left-0 right-0 bg-primary-color text-white">
+            <header className="flex justify-between px-8 py-4 sticky top-0 left-0 right-0 bg-primary-color text-white z-50">
                 {/* Logo */}
                 <div>IMG</div>
                 <nav className="">
