@@ -13,6 +13,9 @@ const Navbar = () => {
                             <Link to="/" className="cursor-pointer">
                                 Learn
                             </Link>
+                            <Link to="/practice" className="cursor-pointer">
+                                Practice
+                            </Link>
                             <Link to="/quiz" className="cursor-pointer">
                                 Quiz Me
                             </Link>

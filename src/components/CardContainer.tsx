@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+
 import Card from "./Card";
 interface countryRes {
     flags: {
@@ -8,19 +9,17 @@ interface countryRes {
     name: {
         common: string;
     };
+    capital: string;
+    region: string;
+    languages: string[];
+    currencies: {
+        name: string;
+    };
 }
 const CardContainer = () => {
-    const [apiResponse, setApiResponse] = useState([]);
-    useEffect(() => {
-        async function getCountries() {
-            const response = await fetch("https://restcountries.com/v3.1/all");
-            const body = await response.json();
-            console.log(body);
-            setApiResponse(body);
-        }
-        getCountries();
-    }, []);
-
+    const { apiResponse, isPending } = useFetch(
+        "https://restcountries.com/v3.1/all"
+    );
     return (
         <>
             <section className="px-8 py-16 bg-secondary-color text-primary-text">
@@ -31,16 +30,34 @@ const CardContainer = () => {
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Dolore pariatur perferendis iure sit fugit cumque!
                 </p>
-                <div className="grid grid-cols-1 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {apiResponse &&
-                        apiResponse.map((country: countryRes) => {
-                            return (
-                                <Card
-                                    flag={country.flags}
-                                    name={country.name}
-                                />
-                            );
-                        })}
+                        apiResponse.map(
+                            (country: countryRes, index: number) => {
+                                return (
+                                    <Card
+                                        key={index}
+                                        flag={country.flags}
+                                        name={country.name}
+                                        capital={country.capital}
+                                        region={country.region}
+                                        languages={
+                                            country.languages &&
+                                            Object.keys(country.languages).map(
+                                                (key: string) => [
+                                                    country.languages[key],
+                                                ]
+                                            )
+                                        }
+                                        currency={
+                                            country.currencies &&
+                                            Object.values(country.currencies)[0]
+                                                .name
+                                        }
+                                    />
+                                );
+                            }
+                        )}
                 </div>
             </section>
         </>

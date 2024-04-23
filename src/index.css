@@ -34,3 +34,21 @@
 .wave .shape-fill {
     fill: var(--secondary-color);
 }
+.card-container {
+    perspective: 800px;
+}
+.card {
+    transform-style: preserve-3d;
+}
+.card-container:hover > div,
+.card-container:focus > div {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+}
+.card-back {
+    transform: rotateY(180deg);
+}
