@@ -29,7 +29,7 @@ const CardContainer = () => {
                 <p className="text-center mb-16">
                     Hover to learn more about the country!
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
                     {apiResponse &&
                         apiResponse.map(
                             (country: countryRes, index: number) => {

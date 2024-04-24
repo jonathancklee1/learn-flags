@@ -22,7 +22,7 @@ const Card = ({
     return (
         <>
             <div className="card-container ">
-                <div className="card relative p-4 rounded-xl  bg-gradient-to-br from-tertiary-color to-primary-color h-[500px] text-secondary-color shadow-lg transition-all duration-[1200ms]">
+                <div className="card relative p-4 rounded-xl  bg-gradient-to-br from-tertiary-color to-primary-color h-[500px] md:h-[400px] text-secondary-color shadow-lg transition-all duration-[1200ms]">
                     <div className="card-front absolute inset-0 grid place-items-center gap-4 p-8">
                         <img src={flag.png} alt={flag.alt} className="w-2/3" />
                         <p className="text-3xl font-bold text-center">

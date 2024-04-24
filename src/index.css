@@ -10,10 +10,17 @@
     --primary-text: #8b8c89;
 }
 
-* {
+*,
+*::before,
+*::after {
     font-family: "Open Sans", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
-
+body {
+    overflow-x: hidden;
+}
 .wave {
     position: absolute;
     bottom: -2px;

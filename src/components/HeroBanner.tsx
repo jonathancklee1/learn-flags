@@ -3,10 +3,10 @@ const HeroBanner = () => {
         <>
             <div className="flex h-[calc(100vh-56px)] px-8 py-4 bg-primary-color text-secondary-color">
                 <div className="mt-10">
-                    <h1 className="font-bold text-5xl w-3/4 mb-10 uppercase">
+                    <h1 className="font-bold text-2xl md:text-5xl w-3/4 mb-10 uppercase">
                         Know your countries
                     </h1>
-                    <h2 className="text-2xl md:w-2/3">
+                    <h2 className="md:text-2xl md:w-2/3">
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Praesentium atque at harum soluta sequi animi
                         consequatur placeat corporis natus culpa dolorem quas
