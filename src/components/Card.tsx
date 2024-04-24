@@ -21,16 +21,16 @@ const Card = ({
 }: CountryCard) => {
     return (
         <>
-            <div className="card-container">
-                <div className="card relative p-4 rounded-xl bg-tertiary-color min-h-[350px] text-secondary-color shadow-lg transition-all duration-[1200ms]">
-                    <div className="card-front absolute inset-0 grid place-items-center gap-4 ">
+            <div className="card-container ">
+                <div className="card relative p-4 rounded-xl  bg-gradient-to-br from-tertiary-color to-primary-color h-[500px] text-secondary-color shadow-lg transition-all duration-[1200ms]">
+                    <div className="card-front absolute inset-0 grid place-items-center gap-4 p-8">
                         <img src={flag.png} alt={flag.alt} className="w-2/3" />
-                        <p className="text-xl font-medium text-center">
+                        <p className="text-3xl font-bold text-center">
                             {name.common}
                         </p>
                     </div>
-                    <div className="card-back absolute inset-0 text-gray text-xl font-medium text-center grid place-content-center gap-4 p-4">
-                        <p className="text-4xl underline mb-4">{name.common}</p>
+                    <div className="card-back absolute inset-0 text-gray text-lg font-medium text-center grid place-content-center gap-4 p-8 ">
+                        <p className="text-3xl underline mb-4">{name.common}</p>
                         <p className="">Continent: {region}</p>
                         <p className="">Capital city: {capital}</p>
                         <p className="">

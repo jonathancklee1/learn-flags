@@ -27,8 +27,7 @@ const CardContainer = () => {
                     Learn flags and country names here
                 </h3>
                 <p className="text-center mb-16">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolore pariatur perferendis iure sit fugit cumque!
+                    Hover to learn more about the country!
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {apiResponse &&
