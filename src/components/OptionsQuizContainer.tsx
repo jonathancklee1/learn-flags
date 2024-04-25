@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-const PracticeContainer = ({ data }) => {
+const OptionsQuizContainer = ({ data, numOfOptions }) => {
     console.log(data);
     const [correctCountry, setCorrectCountry] = useState({});
     const [answerList, setAnswerList] = useState([]);
     const [isAnswered, setIsAnswered] = useState(false);
     const [newQuestion, setNewQuestion] = useState(false);
+    const optionsNumber = numOfOptions ? numOfOptions : 3;
 
     function getRandomCountry(data: []) {
         if (data && data.length > 0) {
@@ -14,29 +15,25 @@ const PracticeContainer = ({ data }) => {
         }
     }
 
-    function populateAnswerList() {
+    function populateAnswerList(optionsNumber: number) {
         const optionsArray = [];
         optionsArray.push({
             name: correctCountry.name.common,
             isCorrect: true,
         });
-        let secondOption = getRandomCountry(data)?.name.common;
-        // Checks if the second option is the same as the first
-        for (const option of optionsArray) {
-            while (secondOption === option.name) {
-                secondOption = getRandomCountry(data)?.name.common;
-            }
-        }
-        optionsArray.push({ name: secondOption, isCorrect: false });
 
-        // Checks if the third option is the same as the first or second
-        let thirdOption = getRandomCountry(data)?.name.common;
-        for (const option of optionsArray) {
-            while (thirdOption === option.name) {
-                thirdOption = getRandomCountry(data)?.name.common;
+        for (let i = 0; i < optionsNumber - 1; i++) {
+            let currentOption = getRandomCountry(data)?.name.common;
+            console.log(currentOption);
+
+            // Checks if the second option is the same as the first
+            for (const option of optionsArray) {
+                while (currentOption === option.name) {
+                    currentOption = getRandomCountry(data)?.name.common;
+                }
             }
+            optionsArray.push({ name: currentOption, isCorrect: false });
         }
-        optionsArray.push({ name: thirdOption, isCorrect: false });
         shuffleArray(optionsArray);
         return optionsArray;
     }
@@ -66,14 +63,14 @@ const PracticeContainer = ({ data }) => {
 
     useEffect(() => {
         if (Object.keys(correctCountry).length > 0) {
-            const answerArray = populateAnswerList();
+            const answerArray = populateAnswerList(optionsNumber);
             setAnswerList(answerArray);
         }
     }, [correctCountry]);
 
     return (
         <>
-            <div className="flex flex-col items-center w-[80vw] max-w-[600px]">
+            <div className="flex flex-col items-center w-[80vw] max-w-[600px] mx-auto">
                 <img
                     src={
                         correctCountry &&
@@ -102,21 +99,23 @@ const PracticeContainer = ({ data }) => {
                         );
                     })}
                 </div>
-            </div>
 
-            <button
-                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color${
-                    isAnswered ? "visible opacity-100" : "invisible opacity-0"
-                }`}
-                onClick={() => {
-                    setNewQuestion((prevNewQuestion) => !prevNewQuestion);
-                    setIsAnswered(false);
-                }}
-            >
-                Next Question
-            </button>
+                <button
+                    className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
+                        isAnswered
+                            ? "visible opacity-100 pointer-events-auto"
+                            : "invisible opacity-0 pointer-events-none"
+                    }`}
+                    onClick={() => {
+                        setNewQuestion((prevNewQuestion) => !prevNewQuestion);
+                        setIsAnswered(false);
+                    }}
+                >
+                    Next Question
+                </button>
+            </div>
         </>
     );
 };
 
-export default PracticeContainer;
+export default OptionsQuizContainer;
