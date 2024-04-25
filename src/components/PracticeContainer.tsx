@@ -73,7 +73,7 @@ const PracticeContainer = ({ data }) => {
 
     return (
         <>
-            <div className="flex flex-col items-center w-[80vw] ">
+            <div className="flex flex-col items-center w-[80vw] max-w-[600px]">
                 <img
                     src={
                         correctCountry &&
@@ -88,11 +88,11 @@ const PracticeContainer = ({ data }) => {
                         return (
                             <button
                                 key={index}
-                                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500  ${
+                                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
                                     isAnswered
                                         ? option.isCorrect
-                                            ? " bg-green-400 border-green-100 !text-white"
-                                            : "bg-red-400 border-red-100 !text-white"
+                                            ? " !bg-green-400 border-green-100 !text-secondary-color"
+                                            : "!bg-red-400 border-red-100 !text-secondary-color"
                                         : ""
                                 }`}
                                 onClick={() => setIsAnswered(true)}
@@ -105,7 +105,7 @@ const PracticeContainer = ({ data }) => {
             </div>
 
             <button
-                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500 ${
+                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color${
                     isAnswered ? "visible opacity-100" : "invisible opacity-0"
                 }`}
                 onClick={() => {

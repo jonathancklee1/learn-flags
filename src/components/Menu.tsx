@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Xmark from "../assets/xmark.svg";
 
 const Menu = ({ isOpen, toggleMenu }) => {
@@ -21,28 +21,34 @@ const Menu = ({ isOpen, toggleMenu }) => {
                 </div>
                 <nav className="">
                     {/* Links */}
-                    <ul className="flex flex-col gap-12 text-xl underline">
-                        <Link
+                    <ul className="flex flex-col gap-12 text-xl">
+                        <NavLink
                             to="/"
-                            className="cursor-pointer"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "active" : ""
+                            }
                             onClick={toggleMenu}
                         >
                             Learn
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="/practice"
-                            className="cursor-pointer"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "active" : ""
+                            }
                             onClick={toggleMenu}
                         >
                             Practice
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="/quiz"
-                            className="cursor-pointer"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "active" : ""
+                            }
                             onClick={toggleMenu}
                         >
                             Quiz Me
-                        </Link>
+                        </NavLink>
                     </ul>
                 </nav>
             </div>

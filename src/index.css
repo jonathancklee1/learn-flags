@@ -21,6 +21,10 @@
 body {
     overflow-x: hidden;
 }
+a.active {
+    text-decoration: underline;
+    font-weight: 500;
+}
 .wave {
     position: absolute;
     bottom: -2px;

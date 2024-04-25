@@ -6,7 +6,7 @@ const PracticePage = () => {
 
     return (
         <>
-            <div className="grid place-content-center h-[calc(100vh-56px)] text-center">
+            <div className="grid place-content-center h-[calc(100vh-56px)] text-center max-w-[1440px] mx-auto text-primary-text">
                 <h1 className="text-2xl font-bold mb-5">Practice here!</h1>
                 <h2 className="text-lg mb-10">What is this country?</h2>
                 <PracticeContainer data={apiResponse} />
