@@ -4,8 +4,8 @@ const PracticeContainer = ({ data }) => {
     console.log(data);
     const [correctCountry, setCorrectCountry] = useState({});
     const [answerList, setAnswerList] = useState([]);
-    const [correctIndex, setCorrectIndex] = useState(null);
     const [isAnswered, setIsAnswered] = useState(false);
+    const [newQuestion, setNewQuestion] = useState(false);
 
     function getRandomCountry(data: []) {
         if (data && data.length > 0) {
@@ -16,24 +16,27 @@ const PracticeContainer = ({ data }) => {
 
     function populateAnswerList() {
         const optionsArray = [];
-        optionsArray.push(correctCountry.name.common);
+        optionsArray.push({
+            name: correctCountry.name.common,
+            isCorrect: true,
+        });
         let secondOption = getRandomCountry(data)?.name.common;
         // Checks if the second option is the same as the first
         for (const option of optionsArray) {
-            while (secondOption === option) {
+            while (secondOption === option.name) {
                 secondOption = getRandomCountry(data)?.name.common;
             }
         }
-        optionsArray.push(secondOption);
+        optionsArray.push({ name: secondOption, isCorrect: false });
 
         // Checks if the third option is the same as the first or second
         let thirdOption = getRandomCountry(data)?.name.common;
         for (const option of optionsArray) {
-            while (thirdOption === option) {
+            while (thirdOption === option.name) {
                 thirdOption = getRandomCountry(data)?.name.common;
             }
         }
-        optionsArray.push(thirdOption);
+        optionsArray.push({ name: thirdOption, isCorrect: false });
         shuffleArray(optionsArray);
         return optionsArray;
     }
@@ -54,18 +57,12 @@ const PracticeContainer = ({ data }) => {
             ];
         }
     }
-    function checkAnswer(name: string, index: number) {
-        if (name === correctCountry.name.common) {
-            setCorrectIndex(index);
-            setIsAnswered(true);
-        }
-    }
 
     useEffect(() => {
         if (data) {
             setCorrectCountry(getRandomCountry(data));
         }
-    }, [data]);
+    }, [data, newQuestion]);
 
     useEffect(() => {
         if (Object.keys(correctCountry).length > 0) {
@@ -84,26 +81,40 @@ const PracticeContainer = ({ data }) => {
                         correctCountry.flags.png
                     }
                     alt="Why are you cheating?"
-                    className="w-2/3 mb-10"
+                    className="mb-10 max-h-36"
                 />
                 <div className="grid gap-3 w-full">
                     {answerList.map((option, index) => {
                         return (
                             <button
                                 key={index}
-                                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full ${
-                                    index === correctIndex &&
-                                    isAnswered &&
-                                    "border-green-100"
+                                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500  ${
+                                    isAnswered
+                                        ? option.isCorrect
+                                            ? " bg-green-400 border-green-100 !text-white"
+                                            : "bg-red-400 border-red-100 !text-white"
+                                        : ""
                                 }`}
-                                onClick={() => checkAnswer(option, index)}
+                                onClick={() => setIsAnswered(true)}
                             >
-                                {option}
+                                {option.name}
                             </button>
                         );
                     })}
                 </div>
             </div>
+
+            <button
+                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500 ${
+                    isAnswered ? "visible opacity-100" : "invisible opacity-0"
+                }`}
+                onClick={() => {
+                    setNewQuestion((prevNewQuestion) => !prevNewQuestion);
+                    setIsAnswered(false);
+                }}
+            >
+                Next Question
+            </button>
         </>
     );
 };
