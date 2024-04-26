@@ -25,6 +25,7 @@ const OptionsQuizContainer = ({
     const [quizFinished, setQuizFinished] = useState(false);
     const optionsNumber = numOfOptions ? numOfOptions : 3;
     const remainingSeconds = useCountdown(10);
+
     function getRandomCountry(data: []) {
         if (data && data.length > 0) {
             const randomNumber = Math.floor(Math.random() * data.length);
@@ -55,21 +56,12 @@ const OptionsQuizContainer = ({
         return optionsArray;
     }
 
-    function shuffleArray(array: string[]) {
-        let currentIndex = array.length;
-
-        // While there remain elements to shuffle...
-        while (currentIndex != 0) {
-            // Pick a remaining element...
-            const randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex],
-                array[currentIndex],
-            ];
+    function shuffleArray<T>(array: T[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
+        return array;
     }
 
     function checkSelected(name: string) {
@@ -92,14 +84,13 @@ const OptionsQuizContainer = ({
         }
     }, [correctCountry]);
     useEffect(() => {
-        if (remainingSeconds === 0) {
+        if (remainingSeconds === 0 && isQuiz) {
             setQuizFinished(true);
         }
     }, [remainingSeconds]);
 
     return (
         <>
-            {" "}
             {!quizFinished && (
                 <div className="flex flex-col items-center w-[80vw] max-w-[600px] mx-auto">
                     {isQuiz && (
@@ -173,7 +164,7 @@ const OptionsQuizContainer = ({
                     </button>
                 </div>
             )}
-            {quizFinished && (
+            {quizFinished && isQuiz && (
                 <Results
                     score={points}
                     isVisible={true}
