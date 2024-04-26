@@ -63,3 +63,8 @@ a.active {
 .card-back {
     transform: rotateY(180deg);
 }
+
+.results-container.show {
+    opacity: 100%;
+    transform: translateY(0px);
+}

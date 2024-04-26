@@ -9,19 +9,23 @@ const QuizPage = () => {
     return (
         <>
             <div className="grid place-content-center min-h-[calc(100vh-56px)] text-center max-w-[1440px] mx-auto text-secondary-color px-8 py-4 bg-primary-color">
-                <h1 className="text-2xl font-bold mb-5">Quiz Time!</h1>
                 {!quizStarted && (
-                    <h2 className="text-lg mb-10">
-                        Race against the clock to see how many flags you get
-                        correct. Your times will be recorded and your top three
-                        scores will be displayed on your own leaderboard.
-                    </h2>
+                    <>
+                        <h1 className="text-2xl font-bold mb-5">Quiz Time!</h1>
+                        <h2 className="text-lg mb-10">
+                            Race against the clock to see how many flags you get
+                            correct. Your times will be recorded and your top
+                            three scores will be displayed on your own
+                            leaderboard.
+                        </h2>
+                    </>
                 )}
                 {quizStarted && (
                     <OptionsQuizContainer
                         data={apiResponse}
                         numOfOptions={4}
                         isQuiz={true}
+                        setQuizStarted={setQuizStarted}
                     />
                 )}
                 {!quizStarted && (
