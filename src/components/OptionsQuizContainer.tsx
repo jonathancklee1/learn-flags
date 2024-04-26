@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
+import Flag from "../assets/flag.png";
+import { useCountdown } from "../hooks/useCountdown";
+interface OptionsQuizContainerProps {
+    data: any[];
+    numOfOptions?: number;
+    isQuiz?: boolean;
+}
 
-const OptionsQuizContainer = ({ data, numOfOptions }) => {
+const OptionsQuizContainer = ({
+    data,
+    numOfOptions,
+    isQuiz,
+}: OptionsQuizContainerProps) => {
     console.log(data);
     const [correctCountry, setCorrectCountry] = useState({});
     const [answerList, setAnswerList] = useState([]);
     const [isAnswered, setIsAnswered] = useState(false);
     const [newQuestion, setNewQuestion] = useState(false);
+    const [points, setPoints] = useState(0);
+    const [numberOfQuestions, setNumberOfQuestions] = useState(1);
     const optionsNumber = numOfOptions ? numOfOptions : 3;
-
+    const remainingSeconds = useCountdown(60);
     function getRandomCountry(data: []) {
         if (data && data.length > 0) {
             const randomNumber = Math.floor(Math.random() * data.length);
@@ -55,6 +68,13 @@ const OptionsQuizContainer = ({ data, numOfOptions }) => {
         }
     }
 
+    function checkSelected(name: string) {
+        setIsAnswered(true);
+        if (name === correctCountry.name.common) {
+            setPoints((prevPoints) => prevPoints + 1);
+        }
+    }
+
     useEffect(() => {
         if (data) {
             setCorrectCountry(getRandomCountry(data));
@@ -71,6 +91,28 @@ const OptionsQuizContainer = ({ data, numOfOptions }) => {
     return (
         <>
             <div className="flex flex-col items-center w-[80vw] max-w-[600px] mx-auto">
+                {isQuiz && (
+                    <>
+                        <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-4 py-1 mb-4">
+                            {remainingSeconds}s
+                        </div>
+                        <div className="flex gap-6 justify-between w-full mb-4">
+                            <div className="flex items-center gap-2 text-3xl font-bold ">
+                                <div className="rounded-xl  bg-secondary-color p-2">
+                                    <img
+                                        src={Flag}
+                                        alt="flag icon"
+                                        className="w-6"
+                                    />
+                                </div>
+                                <span>#{numberOfQuestions}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-xl font-bold ">
+                                Score: <span>{points}</span>
+                            </div>
+                        </div>
+                    </>
+                )}
                 <img
                     src={
                         correctCountry &&
@@ -85,14 +127,14 @@ const OptionsQuizContainer = ({ data, numOfOptions }) => {
                         return (
                             <button
                                 key={index}
-                                className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
+                                className={`border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
                                     isAnswered
                                         ? option.isCorrect
                                             ? " !bg-green-400 border-green-100 !text-secondary-color"
                                             : "!bg-red-400 border-red-100 !text-secondary-color"
                                         : ""
                                 }`}
-                                onClick={() => setIsAnswered(true)}
+                                onClick={() => checkSelected(option.name)}
                             >
                                 {option.name}
                             </button>
@@ -101,7 +143,7 @@ const OptionsQuizContainer = ({ data, numOfOptions }) => {
                 </div>
 
                 <button
-                    className={`border-primary-color text-primary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
+                    className={`border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
                         isAnswered
                             ? "visible opacity-100 pointer-events-auto"
                             : "invisible opacity-0 pointer-events-none"
@@ -109,6 +151,9 @@ const OptionsQuizContainer = ({ data, numOfOptions }) => {
                     onClick={() => {
                         setNewQuestion((prevNewQuestion) => !prevNewQuestion);
                         setIsAnswered(false);
+                        setNumberOfQuestions(
+                            (prevQuestions) => prevQuestions + 1
+                        );
                     }}
                 >
                     Next Question
