@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Flag from "../assets/flag.png";
 import { useCountdown } from "../hooks/useCountdown";
 import Results from "./Results";
+import QuizCountdown from "./QuizCountdown";
 interface OptionsQuizContainerProps {
     data: any[];
     numOfOptions?: number;
@@ -23,8 +24,12 @@ const OptionsQuizContainer = ({
     const [points, setPoints] = useState(0);
     const [numberOfQuestions, setNumberOfQuestions] = useState(1);
     const [quizFinished, setQuizFinished] = useState(false);
+    const [startCountdown, setStartCountdown] = useState(true);
+
     const optionsNumber = numOfOptions ? numOfOptions : 3;
-    const remainingSeconds = useCountdown(10);
+    const startCountdownTime = 3;
+    const quizTime = 7;
+    const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
     function getRandomCountry(data: []) {
         if (data && data.length > 0) {
@@ -98,7 +103,7 @@ const OptionsQuizContainer = ({
                             <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-4 py-1 mb-4">
                                 {remainingSeconds}s
                             </div>
-                            <div className="flex gap-6 justify-between w-full mb-8">
+                            <div className="flex  gap-6 justify-between w-full mb-8">
                                 <div className="flex items-center gap-2 text-3xl font-bold ">
                                     <div className="rounded-xl  bg-secondary-color p-2">
                                         <img
@@ -109,8 +114,9 @@ const OptionsQuizContainer = ({
                                     </div>
                                     <span>#{numberOfQuestions}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-xl font-bold ">
-                                    Score: <span>{points}</span>
+                                <div className="flex items-center gap-2 text-xl font-semibold">
+                                    Your Score:
+                                    <span className="text-3xl">{points}</span>
                                 </div>
                             </div>
                         </>
@@ -132,8 +138,8 @@ const OptionsQuizContainer = ({
                                     className={`border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
                                         isAnswered
                                             ? option.isCorrect
-                                                ? " !bg-green-400 border-green-100 !text-secondary-color"
-                                                : "!bg-red-400 border-red-100 !text-secondary-color"
+                                                ? " !bg-correct-color border-green-100 !text-secondary-color"
+                                                : "!bg-incorrect-color border-red-100 !text-secondary-color"
                                             : ""
                                     }`}
                                     onClick={() => checkSelected(option.name)}
@@ -164,12 +170,18 @@ const OptionsQuizContainer = ({
                     </button>
                 </div>
             )}
-            {quizFinished && isQuiz && (
+            {isQuiz && (
                 <Results
                     score={points}
-                    isVisible={true}
+                    isVisible={quizFinished}
                     setQuizStarted={setQuizStarted}
                     setQuizFinished={setQuizFinished}
+                />
+            )}
+            {isQuiz && startCountdown && (
+                <QuizCountdown
+                    setStartCountdown={setStartCountdown}
+                    startCountdownTime={startCountdownTime}
                 />
             )}
         </>

@@ -13,7 +13,7 @@ const Navbar = () => {
             <header className=" px-8 py-4 sticky top-0 left-0 right-0 bg-primary-color text-white z-40">
                 <div className="flex justify-between w-full max-w-[1440px] mx-auto">
                     {/* Logo */}
-                    <div>IMG</div>
+                    <span className="font-bold text-3xl">FlagGuesser</span>
                     <button onClick={toggleMenu} className="md:hidden">
                         <img
                             src={Hamburger}

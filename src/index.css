@@ -7,6 +7,8 @@
     --primary-color: #6096ba;
     --secondary-color: #e7ecef;
     --tertiary-color: #a3cef1;
+    --correct-color: #4ac054;
+    --incorrect-color: #be3b3b;
     --primary-text: #8b8c89;
 }
 
@@ -23,7 +25,7 @@ body {
 }
 a.active {
     text-decoration: underline;
-    font-weight: 500;
+    font-weight: 700;
 }
 .wave {
     position: absolute;
@@ -66,5 +68,7 @@ a.active {
 
 .results-container.show {
     opacity: 100%;
+    visibility: visible;
     transform: translateY(0px);
+    position: relative;
 }

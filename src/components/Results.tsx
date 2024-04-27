@@ -14,7 +14,7 @@ const Results = ({
     return (
         <>
             <div
-                className={`results-container w-full grid place-content-center opacity-0 translate-y-6 transition-all duration-[2s] ${
+                className={`results-container w-full grid place-content-center opacity-0 translate-y-20 transition-all duration-[2s] absolute top-0 bottom-20 invisible ${
                     isVisible && "show"
                 }`}
             >
@@ -23,12 +23,13 @@ const Results = ({
                     Your Score: {score}
                 </div>
                 <button
-                    className="border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color"
+                    className="border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color font-bold "
                     onClick={() => {
                         setQuizStarted(false);
                         setQuizFinished(false);
                     }}
                 >
+                    {/* Add pulsing animation */}
                     Play Again
                 </button>
             </div>

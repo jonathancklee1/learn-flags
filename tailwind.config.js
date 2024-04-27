@@ -7,6 +7,8 @@ export default {
                 "primary-color": "var(--primary-color)",
                 "secondary-color": "var(--secondary-color)",
                 "tertiary-color": "var(--tertiary-color)",
+                "correct-color": "var(--correct-color)",
+                "incorrect-color": "var(--incorrect-color)",
                 "primary-text": "var(--primary-text)",
             },
         },
