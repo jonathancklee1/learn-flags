@@ -10,6 +10,7 @@
     --correct-color: #4ac054;
     --incorrect-color: #be3b3b;
     --primary-text: #8b8c89;
+    --header-height: 72px;
 }
 
 *,
@@ -26,6 +27,14 @@ body {
 a.active {
     text-decoration: underline;
     font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+    a.active {
+        border-radius: 16px;
+        padding: 8px 16px;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+    }
 }
 .wave {
     position: absolute;

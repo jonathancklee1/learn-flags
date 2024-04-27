@@ -7,7 +7,7 @@ const PracticePage = () => {
 
     return (
         <>
-            <div className="grid place-content-center min-h-[calc(100vh-68px)] text-center max-w-[1440px] mx-auto text-primary-text px-8 py-4 ">
+            <div className="grid place-content-center min-h-[calc(100vh-var(--header-height))] text-center max-w-[1440px] mx-auto text-primary-text px-8 py-4 ">
                 <h1 className="text-2xl font-bold mb-5">Practice here!</h1>
                 <h2 className="text-lg mb-10">
                     Get ready for the quiz by practising with these questions

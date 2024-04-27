@@ -16,7 +16,7 @@ const OptionsQuizContainer = ({
     isQuiz,
     setQuizStarted,
 }: OptionsQuizContainerProps) => {
-    console.log(data);
+    // console.log(data);
     const [correctCountry, setCorrectCountry] = useState({});
     const [answerList, setAnswerList] = useState([]);
     const [isAnswered, setIsAnswered] = useState(false);
@@ -27,8 +27,8 @@ const OptionsQuizContainer = ({
     const [startCountdown, setStartCountdown] = useState(true);
 
     const optionsNumber = numOfOptions ? numOfOptions : 3;
-    const startCountdownTime = 10;
-    const quizTime = 10;
+    const startCountdownTime = isQuiz ? 3 : 0;
+    const quizTime = isQuiz ? 60 : 0;
     const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
     function getRandomCountry(data: []) {
@@ -47,7 +47,7 @@ const OptionsQuizContainer = ({
 
         for (let i = 0; i < optionsNumber - 1; i++) {
             let currentOption = getRandomCountry(data)?.name.common;
-            console.log(currentOption);
+            // console.log(currentOption);
 
             // Checks if the second option is the same as the first
             for (const option of optionsArray) {
@@ -100,7 +100,7 @@ const OptionsQuizContainer = ({
                 <div className="flex flex-col items-center w-[80vw] max-w-[600px] mx-auto">
                     {isQuiz && (
                         <>
-                            <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-4 py-1 mb-4">
+                            <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-8 py-4 mb-8">
                                 {remainingSeconds}s
                             </div>
                             <div className="flex  gap-6 justify-between w-full mb-8">
@@ -135,7 +135,7 @@ const OptionsQuizContainer = ({
                             return (
                                 <button
                                     key={index}
-                                    className={`border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
+                                    className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
                                         isAnswered
                                             ? option.isCorrect
                                                 ? " !bg-correct-color border-green-100 !text-secondary-color"
@@ -151,7 +151,7 @@ const OptionsQuizContainer = ({
                     </div>
 
                     <button
-                        className={`border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
+                        className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
                             isAnswered
                                 ? "visible opacity-100 pointer-events-auto"
                                 : "invisible opacity-0 pointer-events-none"

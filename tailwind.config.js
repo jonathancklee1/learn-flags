@@ -11,6 +11,9 @@ export default {
                 "incorrect-color": "var(--incorrect-color)",
                 "primary-text": "var(--primary-text)",
             },
+            height: {
+                "header-height": "var(--header-height)",
+            },
         },
     },
     plugins: [],
