@@ -27,8 +27,8 @@ const OptionsQuizContainer = ({
     const [startCountdown, setStartCountdown] = useState(true);
 
     const optionsNumber = numOfOptions ? numOfOptions : 3;
-    const startCountdownTime = 3;
-    const quizTime = 7;
+    const startCountdownTime = 10;
+    const quizTime = 10;
     const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
     function getRandomCountry(data: []) {

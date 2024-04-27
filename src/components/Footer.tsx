@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <>
-            <footer className="flex justify-center max-w-[1440px] mx-auto px-8 py-4 bg-tertiary-color text-secondary-color">
+            <footer className="flex justify-center  mx-auto px-8 py-4 bg-tertiary-color text-secondary-color">
                 <p>
                     A website made by&nbsp;
                     <a
