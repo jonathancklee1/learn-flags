@@ -1,34 +1,33 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Flag from "../assets/flag.png";
 import { useCountdown } from "../hooks/useCountdown";
 import Results from "./Results";
 import QuizCountdown from "./QuizCountdown";
+import { QuizContext } from "../App";
 interface OptionsQuizContainerProps {
     data: any[];
     numOfOptions?: number;
     isQuiz?: boolean;
-    setQuizStarted: (value: boolean) => void;
 }
 
 const OptionsQuizContainer = ({
     data,
     numOfOptions,
     isQuiz,
-    setQuizStarted,
 }: OptionsQuizContainerProps) => {
-    // console.log(data);
     const [correctCountry, setCorrectCountry] = useState({});
     const [answerList, setAnswerList] = useState([]);
     const [isAnswered, setIsAnswered] = useState(false);
     const [newQuestion, setNewQuestion] = useState(false);
     const [points, setPoints] = useState(0);
     const [numberOfQuestions, setNumberOfQuestions] = useState(1);
-    const [quizFinished, setQuizFinished] = useState(false);
     const [startCountdown, setStartCountdown] = useState(true);
+
+    const { quizFinished, setQuizFinished } = useContext(QuizContext);
 
     const optionsNumber = numOfOptions ? numOfOptions : 3;
     const startCountdownTime = isQuiz ? 3 : 0;
-    const quizTime = isQuiz ? 60 : 0;
+    const quizTime = isQuiz ? 10 : 0;
     const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
     function getRandomCountry(data: []) {
@@ -47,7 +46,6 @@ const OptionsQuizContainer = ({
 
         for (let i = 0; i < optionsNumber - 1; i++) {
             let currentOption = getRandomCountry(data)?.name.common;
-            // console.log(currentOption);
 
             // Checks if the second option is the same as the first
             for (const option of optionsArray) {
@@ -170,14 +168,7 @@ const OptionsQuizContainer = ({
                     </button>
                 </div>
             )}
-            {isQuiz && (
-                <Results
-                    score={points}
-                    isVisible={quizFinished}
-                    setQuizStarted={setQuizStarted}
-                    setQuizFinished={setQuizFinished}
-                />
-            )}
+            {isQuiz && <Results score={points} isVisible={quizFinished} />}
             {isQuiz && startCountdown && (
                 <QuizCountdown
                     setStartCountdown={setStartCountdown}

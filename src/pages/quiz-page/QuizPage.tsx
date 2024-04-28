@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Footer from "../../components/Footer";
 import OptionsQuizContainer from "../../components/OptionsQuizContainer";
 import { useFetch } from "../../hooks/useFetch";
+import React from "react";
+import Leaderboard from "../../components/Leaderboard";
+import { QuizContext } from "../../App";
+import Wave from "../../components/Wave";
 
 const QuizPage = () => {
     const { apiResponse } = useFetch("https://restcountries.com/v3.1/all");
-    const [quizStarted, setQuizStarted] = useState(false);
+
+    const { quizStarted, setQuizStarted } = useContext(QuizContext);
 
     return (
         <>
@@ -18,7 +23,9 @@ const QuizPage = () => {
                                 : "absolute invisible opacity-0"
                         }`}
                     >
-                        <h1 className="text-2xl font-bold mb-5">Quiz Time!</h1>
+                        <h1 className="text-2xl md:text-3xl uppercase font-bold mb-5">
+                            Quiz Time!
+                        </h1>
                         <h2 className="text-lg mb-10">
                             Race against the clock to see how many flags you get
                             correct. Your times will be recorded and your top
@@ -38,11 +45,16 @@ const QuizPage = () => {
                             data={apiResponse}
                             numOfOptions={4}
                             isQuiz={true}
-                            setQuizStarted={setQuizStarted}
                         />
                     )}
                 </div>
             </div>
+            {!quizStarted && (
+                <>
+                    <Wave />
+                    <Leaderboard />
+                </>
+            )}
             <Footer />
         </>
     );

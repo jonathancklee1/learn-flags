@@ -77,7 +77,7 @@ a.active {
 }
 .card-container:hover .info-container,
 .card-container:focus .info-container {
-    animation: slideUp 1.5s ease;
+    animation: slideUp 1s ease;
 }
 @keyframes slideUp {
     from {

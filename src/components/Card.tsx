@@ -44,13 +44,44 @@ const Card = ({
                                 {name.common}
                             </p>
                         </div>
-                        <div className="info-container flex flex-col gap-3 bg-tertiary-color grow  text-white p-8  rounded-xl">
-                            <p className="">Continent: {region}</p>
-                            <p className="">Capital city: {capital}</p>
-                            <p className="">
-                                Languages: {languages && languages.join(", ")}
-                            </p>
-                            <p className="">Currency used: {currency}</p>
+                        <div className="info-container  bg-tertiary-color grow  text-white px-10 py-6  rounded-xl">
+                            <ul className="flex flex-col gap-3 list-disc">
+                                <li>
+                                    <p className="text-secondary-color">
+                                        Continent:{" "}
+                                        <span className="font-bold text-white">
+                                            {region}
+                                        </span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p className="text-secondary-color">
+                                        Capital city:{" "}
+                                        <span className="font-bold text-white">
+                                            {capital}
+                                        </span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p className="text-secondary-color">
+                                        Languages:{" "}
+                                        <span className="font-bold text-white">
+                                            {" "}
+                                            {languages && languages.join(", ")}
+                                        </span>
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p className="text-secondary-color">
+                                        Currency used:
+                                        <span className="font-bold text-white">
+                                            {" "}
+                                            {currency}
+                                        </span>
+                                    </p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
