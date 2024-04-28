@@ -46,7 +46,7 @@ a.active {
     transform: rotate(180deg);
 }
 
-.wave svg {
+.wave-mobile svg {
     position: relative;
     display: block;
     width: calc(158% + 1.3px);
@@ -56,6 +56,14 @@ a.active {
 .wave .shape-fill {
     fill: var(--secondary-color);
 }
+
+.wave-desktop svg {
+    position: relative;
+    display: block;
+    width: calc(117% + 1.3px);
+    height: 159px;
+}
+
 .card-container {
     perspective: 800px;
 }
@@ -66,6 +74,15 @@ a.active {
 .card-container:focus > div {
     cursor: pointer;
     transform: rotateY(180deg);
+}
+.card-container:hover .info-container,
+.card-container:focus .info-container {
+    animation: slideUp 1.5s ease;
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
 }
 .card-front,
 .card-back {

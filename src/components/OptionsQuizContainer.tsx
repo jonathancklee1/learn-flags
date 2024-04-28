@@ -151,7 +151,7 @@ const OptionsQuizContainer = ({
                     </div>
 
                     <button
-                        className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
+                        className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  font-bold text-2xl${
                             isAnswered
                                 ? "visible opacity-100 pointer-events-auto"
                                 : "invisible opacity-0 pointer-events-none"

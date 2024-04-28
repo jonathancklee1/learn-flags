@@ -6,6 +6,7 @@ import { useFetch } from "../../hooks/useFetch";
 const QuizPage = () => {
     const { apiResponse } = useFetch("https://restcountries.com/v3.1/all");
     const [quizStarted, setQuizStarted] = useState(false);
+
     return (
         <>
             <div className="grid place-content-center min-h-[calc(100vh-var(--header-height))] text-center mx-auto text-secondary-color px-8 py-4 bg-primary-color">

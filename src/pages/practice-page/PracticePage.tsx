@@ -12,7 +12,9 @@ const PracticePage = () => {
                 <h2 className="text-lg mb-10">
                     Get ready for the quiz by practising with these questions
                 </h2>
-                <h2 className="text-lg mb-10">What is this country?</h2>
+                <h2 className="text-lg mb-10 font-bold">
+                    What is this country?
+                </h2>
                 <OptionsQuizContainer data={apiResponse} />
             </div>
             <Footer />

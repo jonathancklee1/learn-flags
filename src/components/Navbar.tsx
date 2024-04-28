@@ -10,7 +10,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <header className=" px-8 py-4 sticky top-0 left-0 right-0 bg-primary-color text-white z-40 min-h-[var(--header-height)]">
+            <header className="px-8 py-4 sticky top-0 left-0 right-0 bg-primary-color text-secondary-color z-40 min-h-[var(--header-height)]">
                 <div className="flex justify-between w-full max-w-[1440px] mx-auto">
                     {/* Logo */}
                     <span className="font-bold text-3xl">FlagGuesser</span>
@@ -23,7 +23,6 @@ const Navbar = () => {
                     </button>
                     <nav className="hidden md:block">
                         {/* Links */}
-
                         <ul className="gap-8 hidden md:flex md:items-center">
                             <NavLink
                                 to="/"
