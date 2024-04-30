@@ -2,7 +2,6 @@ import { TailSpin } from "react-loader-spinner";
 import { useFetch } from "../hooks/useFetch";
 
 import Card from "./Card";
-import { useState } from "react";
 interface countryRes {
     flags: {
         png: string;
@@ -18,15 +17,16 @@ interface countryRes {
         name: string;
     };
 }
-const CardContainer = (filters) => {
-    // const [countriesList, setCountriesList] = useState([]);
-
-    const { apiResponse, isPending } = useFetch(
-        "https://restcountries.com/v3.1/all"
+const CardContainer = ({ searchQuery, regionFilter }) => {
+    const endpoint =
+        searchQuery !== ""
+            ? `name/${searchQuery}`
+            : regionFilter
+            ? `region/${regionFilter}`
+            : "all";
+    const { apiResponse, isPending, errorMessage } = useFetch(
+        `https://restcountries.com/v3.1/${endpoint}`
     );
-    // if (apiResponse) {
-    //     setCountriesList(apiResponse);
-    // }
     return (
         <>
             {isPending && (
@@ -46,6 +46,7 @@ const CardContainer = (filters) => {
                     <div className="max-w-[1440px] mx-auto">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10">
                             {apiResponse &&
+                                !errorMessage &&
                                 apiResponse.map(
                                     (country: countryRes, index: number) => {
                                         return (
@@ -74,6 +75,11 @@ const CardContainer = (filters) => {
                                     }
                                 )}
                         </div>
+                        {errorMessage && (
+                            <p className="font-bold text-2xl text-center">
+                                {errorMessage}
+                            </p>
+                        )}
                     </div>
                 </section>
             )}

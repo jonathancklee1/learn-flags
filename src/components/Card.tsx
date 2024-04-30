@@ -40,17 +40,17 @@ const Card = ({
                                 alt={flag.alt}
                                 className="w-1/3"
                             />
-                            <p className="text-2xl font-bold w-2/3">
+                            <p className="text-2xl font-bold w-2/3 line-clamp-2 overflow-ellipsis">
                                 {name.common}
                             </p>
                         </div>
-                        <div className="info-container  bg-tertiary-color grow  text-white px-10 py-6  rounded-xl">
+                        <div className="info-container  bg-tertiary-color grow  text-white px-10 py-6 rounded-xl">
                             <ul className="flex flex-col gap-3 list-disc">
                                 <li>
                                     <p className="text-secondary-color">
                                         Continent:{" "}
                                         <span className="font-bold text-white">
-                                            {region}
+                                            {region ? region : "N/A"}
                                         </span>
                                     </p>
                                 </li>
@@ -58,7 +58,7 @@ const Card = ({
                                     <p className="text-secondary-color">
                                         Capital city:{" "}
                                         <span className="font-bold text-white">
-                                            {capital}
+                                            {capital ? capital : "N/A"}
                                         </span>
                                     </p>
                                 </li>
@@ -67,7 +67,9 @@ const Card = ({
                                         Languages:{" "}
                                         <span className="font-bold text-white">
                                             {" "}
-                                            {languages && languages.join(", ")}
+                                            {languages
+                                                ? languages.join(", ")
+                                                : "N/A"}
                                         </span>
                                     </p>
                                 </li>
@@ -77,7 +79,7 @@ const Card = ({
                                         Currency used:
                                         <span className="font-bold text-white">
                                             {" "}
-                                            {currency}
+                                            {currency ? currency : "N/A"}
                                         </span>
                                     </p>
                                 </li>

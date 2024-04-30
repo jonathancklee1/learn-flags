@@ -6,8 +6,13 @@ import HeroBanner from "../../components/HeroBanner";
 
 const LandingPage = () => {
     const [searchInput, setSearchInput] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [regionFilter, setRegionFilter] = useState("");
+
     useEffect(() => {
-        console.log(searchInput);
+        // Adds delay to search input so it doesn't fire on every keystroke
+        const timeOutId = setTimeout(() => setSearchQuery(searchInput), 500);
+        return () => clearTimeout(timeOutId);
     }, [searchInput]);
     return (
         <>
@@ -23,8 +28,13 @@ const LandingPage = () => {
             <Filters
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
+                setRegionFilter={setRegionFilter}
+                regionFilter={regionFilter}
             />
-            <CardContainer />
+            <CardContainer
+                searchQuery={searchQuery}
+                regionFilter={regionFilter}
+            />
             <Footer />
         </>
     );
