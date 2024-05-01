@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { QuizContext } from "../App";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface ResultsProps {
     score: number;
@@ -14,7 +16,7 @@ const Results = ({ score, isVisible }: ResultsProps) => {
         const month = today.getMonth() + 1;
         const year = today.getFullYear();
         const date = today.getDate();
-        return `${month}/${date}/${year}`;
+        return `${date}/${month}/${year}`;
     }
     function checkHighscore(currentDate: string) {
         const scores = JSON.parse(localStorage.getItem("quiz-high-scores")!);
@@ -48,6 +50,19 @@ const Results = ({ score, isVisible }: ResultsProps) => {
             checkHighscore(currentDate);
         }
     }
+
+    // Gsap Animation
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            defaults: { duration: 1.75, ease: "power3.out" },
+            repeat: -1,
+        });
+        tl.to(".play-again-button", {
+            scale: 1.1,
+        }).to(".play-again-button", {
+            scale: 1,
+        });
+    });
     return (
         <>
             <div
@@ -63,17 +78,16 @@ const Results = ({ score, isVisible }: ResultsProps) => {
                         <span className="ml-2">&#127881;</span>
                     </div>
                 )}
-                <div className=" bg-secondary-color text-primary-color p-6 rounded-lg text-2xl font-bold mb-8 max-w-[500px]">
+                <div className="bg-secondary-color text-primary-color p-6 rounded-lg text-2xl font-bold mb-8 max-w-[500px] mx-auto">
                     Your Score: {score}
                 </div>
                 <button
-                    className="border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color font-bold "
+                    className="play-again-button border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color hover:border-secondary-color focus:border-secondary-color font-bold "
                     onClick={() => {
                         setQuizStarted(false);
                         setQuizFinished(false);
                     }}
                 >
-                    {/* Add pulsing animation */}
                     Play Again
                 </button>
             </div>

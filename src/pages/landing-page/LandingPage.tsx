@@ -14,6 +14,7 @@ const LandingPage = () => {
         const timeOutId = setTimeout(() => setSearchQuery(searchInput), 500);
         return () => clearTimeout(timeOutId);
     }, [searchInput]);
+
     return (
         <>
             <HeroBanner />

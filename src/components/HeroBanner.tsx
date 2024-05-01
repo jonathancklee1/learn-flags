@@ -1,6 +1,18 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import Wave from "./Wave";
 
 const HeroBanner = () => {
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            defaults: { duration: 1, ease: "power3.out", opacity: 0 },
+        });
+        tl.from("h1", {
+            x: -100,
+        }).from("h2", {
+            y: 150,
+        });
+    });
     return (
         <>
             <div className="flex min-h-[calc(100vh-var(--header-height))] px-8 py-4 bg-primary-color text-secondary-color">

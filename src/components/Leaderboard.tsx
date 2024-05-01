@@ -2,7 +2,6 @@ const Leaderboard = () => {
     const highScores = localStorage.getItem("quiz-high-scores")
         ? JSON.parse(localStorage.getItem("quiz-high-scores")!)
         : null;
-    console.log(highScores);
     return (
         <>
             <section className="min-h-100vh text-center mx-auto text-primary-text px-8 py-8 md:py-20 bg-secondary-color flex flex-col justify-center gap-4">
@@ -19,6 +18,7 @@ const Leaderboard = () => {
                                 ) => {
                                     return (
                                         <li
+                                            key={index}
                                             className={`flex flex-col justify-between p-6 border-4 ${
                                                 index === 0
                                                     ? "border-[#ffdd45] bg-gradient-to-r from-[#ffe554] md:order-2 h-full"

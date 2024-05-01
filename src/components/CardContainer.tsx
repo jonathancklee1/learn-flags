@@ -2,6 +2,7 @@ import { TailSpin } from "react-loader-spinner";
 import { useFetch } from "../hooks/useFetch";
 
 import Card from "./Card";
+import { useEffect, useState } from "react";
 interface countryRes {
     flags: {
         png: string;
@@ -17,7 +18,18 @@ interface countryRes {
         name: string;
     };
 }
-const CardContainer = ({ searchQuery, regionFilter }) => {
+interface CardContainerProps {
+    searchQuery: string;
+    regionFilter: string;
+}
+
+const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
+    const displayCardsCount = 24;
+    const [restructuredArray, setRestructuredArray] = useState([[]]);
+    const [restructuredArrayDisplay, setRestructuredArrayDisplay] = useState(
+        []
+    );
+    const [paginationCount, setPaginationCount] = useState(1);
     const endpoint =
         searchQuery !== ""
             ? `name/${searchQuery}`
@@ -27,6 +39,36 @@ const CardContainer = ({ searchQuery, regionFilter }) => {
     const { apiResponse, isPending, errorMessage } = useFetch(
         `https://restcountries.com/v3.1/${endpoint}`
     );
+    function restructureArray(array: [], displayCount: number) {
+        const restructuredArray = [];
+        while (array.length > 0) {
+            const chunk = array.splice(0, displayCount);
+            restructuredArray.push(chunk);
+        }
+        return restructuredArray;
+    }
+    function loadMore() {
+        setPaginationCount((prevCount) => prevCount + 1);
+        setRestructuredArrayDisplay([
+            ...restructuredArrayDisplay,
+            ...restructuredArray[paginationCount],
+        ]);
+    }
+
+    useEffect(() => {
+        if (apiResponse) {
+            const restructuredArray = restructureArray(
+                apiResponse,
+                displayCardsCount
+            );
+            setRestructuredArray(restructuredArray);
+            setRestructuredArrayDisplay(restructuredArray[0]);
+        }
+        return () => {
+            restructureArray;
+        };
+    }, [apiResponse]);
+
     return (
         <>
             {isPending && (
@@ -45,9 +87,9 @@ const CardContainer = ({ searchQuery, regionFilter }) => {
                 <section className="px-8 py-16 bg-secondary-color text-primary-text">
                     <div className="max-w-[1440px] mx-auto">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10">
-                            {apiResponse &&
+                            {restructuredArrayDisplay &&
                                 !errorMessage &&
-                                apiResponse.map(
+                                restructuredArrayDisplay.map(
                                     (country: countryRes, index: number) => {
                                         return (
                                             <Card
@@ -75,6 +117,14 @@ const CardContainer = ({ searchQuery, regionFilter }) => {
                                     }
                                 )}
                         </div>
+                        {restructuredArray.length > paginationCount && (
+                            <button
+                                className="font-semibold text-md text-center underline text-primary-color mx-auto w-full mt-10 hover:text-tertiary-color"
+                                onClick={loadMore}
+                            >
+                                Load More
+                            </button>
+                        )}
                         {errorMessage && (
                             <p className="font-bold text-2xl text-center">
                                 {errorMessage}
