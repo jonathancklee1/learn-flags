@@ -8,7 +8,7 @@ interface CountryCard {
     };
     capital: string;
     currency: string;
-    languages: string[];
+    languages: string[][];
     region: string;
 }
 const Card = ({

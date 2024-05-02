@@ -14,9 +14,11 @@ interface countryRes {
     capital: string;
     continents: string[];
     languages: string[];
-    currencies: {
-        name: string;
-    };
+    currencies: [
+        {
+            name: string;
+        }
+    ];
 }
 interface CardContainerProps {
     searchQuery: string;
@@ -86,7 +88,7 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
             {!isPending && (
                 <section className="px-8 py-16 bg-secondary-color text-primary-text">
                     <div className="max-w-[1440px] mx-auto">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                             {restructuredArrayDisplay &&
                                 !errorMessage &&
                                 restructuredArrayDisplay.map(
