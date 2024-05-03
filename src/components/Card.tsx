@@ -44,7 +44,7 @@ const Card = ({
                                 {name.common}
                             </p>
                         </div>
-                        <div className="info-container  bg-tertiary-color grow  text-white px-10 py-6 rounded-xl">
+                        <div className="info-container scrollbar  bg-tertiary-color grow overflow-y-auto text-white px-10 py-6 rounded-xl">
                             <ul className="flex flex-col gap-3 list-disc">
                                 <li>
                                     <p className="text-secondary-color">

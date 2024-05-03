@@ -10,7 +10,7 @@ const HeroBanner = () => {
         });
         tl.from("h1", {
             x: -100,
-        }).from("p", {
+        }).from(".description", {
             y: 150,
         });
         gsap.to("#head", {
@@ -59,7 +59,7 @@ const HeroBanner = () => {
                         <h1 className="font-bold text-2xl md:text-5xl w-3/4 mb-10 uppercase">
                             Know your flags
                         </h1>
-                        <p className="md:text-2xl md:w-2/3 mb-6">
+                        <p className="description md:text-2xl md:w-2/3 mb-6">
                             Embark on a global adventure from the comfort of
                             your screen with our flag guessing quiz website.
                             Unleash your inner explorer and see how many flags

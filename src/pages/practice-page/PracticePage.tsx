@@ -8,7 +8,7 @@ const PracticePage = () => {
     const { apiResponse } = useFetch("https://restcountries.com/v3.1/all");
     useGSAP(() => {
         const tl = gsap.timeline({
-            defaults: { opacity: 0, duration: 0.8, ease: "power3.out" },
+            defaults: { opacity: 0, duration: 0.6, ease: "power3.out" },
         });
         tl.from("h1", {
             y: -50,

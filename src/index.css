@@ -72,9 +72,9 @@ a.active {
 }
 .card-container:hover > div,
 .card-container:focus > div {
-    cursor: pointer;
     transform: rotateY(180deg);
 }
+
 .card-container:hover .info-container,
 .card-container:focus .info-container {
     animation: slideUp 1s ease;
@@ -108,4 +108,18 @@ a.active {
 .Dropdown-arrow {
     top: 50%;
     transform: translateY(-50%);
+}
+.scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    padding-right: 12px;
+}
+.scrollbar::-webkit-scrollbar-track {
+    background-color: var(--tertiary-color);
+    border-radius: 20px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    cursor: pointer;
 }
