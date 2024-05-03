@@ -11,7 +11,6 @@ export const useFetch = (url: string) => {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(response.statusText);
                 const body = await response.json();
-                console.log(body);
                 setIsPending(false);
                 setApiResponse(body);
                 setErrorMessage(null);

@@ -42,7 +42,7 @@ const OptionsQuizContainer = ({
 
     const optionsNumber = numOfOptions ? numOfOptions : 3;
     const startCountdownTime = isQuiz ? 3 : 0;
-    const quizTime = isQuiz ? 10 : 0;
+    const quizTime = isQuiz ? 60 : 0;
     const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
     function getRandomCountry(

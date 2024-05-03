@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# FlagGuesser Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the repository of our interactive flag quiz game. Built with the power of React and Tailwind CSS, this website offers a delightful way to test your knowledge of world flags.
 
-Currently, two official plugins are available:
+Click here to visit the site : https://jonathancklee1.github.io/learn-flags/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+-   **Interactive Quiz**: Put what you have learnt to the test with a timed quiz feature. Your high score will be recorded locally.
+-   **Search and Filter Functionality**: browse through all country's flags in the learn page.
+-   **Practice makes Perfect**: Use the practice page to test your knowledge without time pressure.
+-   **Personal Leaderboard**: View your highest point scored and see your improvements over time.
+-   **Responsive Design**: Built with responsive Tailwind CSS.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## TechStack and Packages used
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-   React
+-   Tailwind CSS
+-   RestCountries API
+-   React Router
+-   react-dropdown
+-   shapeDivider.app
+-   GSAP for animations
