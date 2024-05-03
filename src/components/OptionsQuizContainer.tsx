@@ -98,7 +98,7 @@ const OptionsQuizContainer = ({
                 <div className="flex flex-col items-center w-[80vw] max-w-[600px] mx-auto">
                     {isQuiz && (
                         <>
-                            <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-8 py-4 mb-8">
+                            <div className="bg-secondary-color text-primary-color text-4xl font-bold rounded-lg px-8 md:px-16 py-4 mb-8">
                                 {remainingSeconds}s
                             </div>
                             <div className="flex  gap-6 justify-between w-full mb-8">

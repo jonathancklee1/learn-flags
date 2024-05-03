@@ -98,3 +98,14 @@ a.active {
     transform: translateY(0px);
     position: relative;
 }
+
+.Dropdown-control {
+    padding-block: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+}
+.Dropdown-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+}

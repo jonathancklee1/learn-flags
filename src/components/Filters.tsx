@@ -43,7 +43,7 @@ const Filters = ({
     return (
         <>
             <form
-                className=" w-full px-8 pt-12 bg-secondary-color mx-auto"
+                className=" w-full px-8 md:px-16 pt-12 bg-secondary-color mx-auto"
                 onSubmit={submitHandler}
             >
                 <div className=" flex flex-col md:flex-row md:justify-between items-start gap-4 max-w-[1440px] mx-auto">

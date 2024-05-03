@@ -25,15 +25,9 @@ function App() {
                     }}
                 >
                     <Routes>
-                        <Route path="/learn-flags/" element={<LandingPage />} />
-                        <Route
-                            path="/learn-flags/practice"
-                            element={<PracticePage />}
-                        />
-                        <Route
-                            path="/learn-flags/quiz"
-                            element={<QuizPage />}
-                        />
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/practice" element={<PracticePage />} />
+                        <Route path="/quiz" element={<QuizPage />} />
                     </Routes>
                 </QuizContext.Provider>
             </BrowserRouter>

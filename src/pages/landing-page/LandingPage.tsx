@@ -18,7 +18,7 @@ const LandingPage = () => {
     return (
         <>
             <HeroBanner />
-            <div className="px-8 pt-16 pb-6  bg-secondary-color text-primary-text">
+            <div className="px-8 md:px-16 pt-16 pb-6  bg-secondary-color text-primary-text">
                 <h3 className="text-center text-2xl font-bold uppercase mb-10">
                     Learn flags and country names here
                 </h3>

@@ -4,7 +4,7 @@ const Leaderboard = () => {
         : null;
     return (
         <>
-            <section className="min-h-100vh text-center mx-auto text-primary-text px-8 py-8 md:py-20 bg-secondary-color flex flex-col justify-center gap-4">
+            <section className="min-h-100vh text-center mx-auto text-primary-text px-8 md:px-16 py-8 md:py-20 bg-secondary-color flex flex-col justify-center gap-4">
                 <h2 className="text-2xl md:text-3xl uppercase font-bold mb-6 upp">
                     Your best scores
                 </h2>

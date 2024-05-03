@@ -4,7 +4,7 @@ const Menu = ({ isOpen, toggleMenu }) => {
     return (
         <>
             <div
-                className={`flex flex-col fixed md:hidden inset-0 gap-20 w-[100svw] h-[100svh] px-8 py-4 bg-secondary-color text-primary-color ${
+                className={`flex flex-col fixed md:hidden inset-0 gap-20 w-[100svw] h-[100svh] px-8 md:px-16 py-4 bg-secondary-color text-primary-color ${
                     !isOpen ? "translate-x-full" : "translate-x-0"
                 } transition-all z-50`}
             >

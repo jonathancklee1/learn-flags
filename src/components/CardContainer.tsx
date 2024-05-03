@@ -1,4 +1,3 @@
-import { TailSpin } from "react-loader-spinner";
 import { useFetch } from "../hooks/useFetch";
 
 import Card from "./Card";
@@ -73,53 +72,45 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
 
     return (
         <>
-            {isPending && (
-                <TailSpin
-                    visible={true}
-                    height="80"
-                    width="80"
-                    color="var(--primary-color)"
-                    ariaLabel="tail-spin-loading"
-                    radius="1"
-                    wrapperStyle={{}}
-                    wrapperClass="flex items-center justify-center w-full h-full mx-auto bg-secondary-color py-10"
-                />
-            )}
-            {!isPending && (
-                <section className="px-8 py-16 bg-secondary-color text-primary-text">
-                    <div className="max-w-[1440px] mx-auto">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                            {restructuredArrayDisplay &&
-                                !errorMessage &&
-                                restructuredArrayDisplay.map(
-                                    (country: countryRes, index: number) => {
-                                        return (
-                                            <Card
-                                                key={index}
-                                                flag={country.flags}
-                                                name={country.name}
-                                                capital={country.capital}
-                                                region={country.continents[0]}
-                                                languages={
-                                                    country.languages &&
-                                                    Object.keys(
-                                                        country.languages
-                                                    ).map((key: string) => [
-                                                        country.languages[key],
-                                                    ])
-                                                }
-                                                currency={
-                                                    country.currencies &&
-                                                    Object.values(
-                                                        country.currencies
-                                                    )[0].name
-                                                }
-                                            />
-                                        );
-                                    }
-                                )}
-                        </div>
-                        {restructuredArray.length > paginationCount && (
+            <section
+                className={`${
+                    !isPending ? "visible opacity-100" : "invisible opacity-0"
+                } px-8 md:px-16 py-16 bg-secondary-color text-primary-text transition-all`}
+            >
+                <div className="max-w-[1440px] mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                        {restructuredArrayDisplay &&
+                            !errorMessage &&
+                            restructuredArrayDisplay.map(
+                                (country: countryRes, index: number) => {
+                                    return (
+                                        <Card
+                                            key={index}
+                                            flag={country.flags}
+                                            name={country.name}
+                                            capital={country.capital}
+                                            region={country.continents[0]}
+                                            languages={
+                                                country.languages &&
+                                                Object.keys(
+                                                    country.languages
+                                                ).map((key: string) => [
+                                                    country.languages[key],
+                                                ])
+                                            }
+                                            currency={
+                                                country.currencies &&
+                                                Object.values(
+                                                    country.currencies
+                                                )[0].name
+                                            }
+                                        />
+                                    );
+                                }
+                            )}
+                    </div>
+                    {!errorMessage &&
+                        restructuredArray.length > paginationCount && (
                             <button
                                 className="font-semibold text-md text-center underline text-primary-color mx-auto w-full mt-10 hover:text-tertiary-color"
                                 onClick={loadMore}
@@ -127,14 +118,13 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
                                 Load More
                             </button>
                         )}
-                        {errorMessage && (
-                            <p className="font-bold text-2xl text-center">
-                                {errorMessage}
-                            </p>
-                        )}
-                    </div>
-                </section>
-            )}
+                    {errorMessage && (
+                        <p className="font-bold text-2xl text-center">
+                            {errorMessage}
+                        </p>
+                    )}
+                </div>
+            </section>
         </>
     );
 };
