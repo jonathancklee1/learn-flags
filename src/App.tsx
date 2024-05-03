@@ -6,8 +6,14 @@ import QuizPage from "./pages/quiz-page/QuizPage";
 import PracticePage from "./pages/practice-page/PracticePage";
 import { useState } from "react";
 import React from "react";
+interface QuizContextValue {
+    quizStarted: boolean;
+    setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
+    quizFinished: boolean;
+    setQuizFinished: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export const QuizContext = React.createContext(null);
+export const QuizContext = React.createContext<QuizContextValue | null>(null);
 
 function App() {
     const [quizStarted, setQuizStarted] = useState(false);

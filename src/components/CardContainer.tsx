@@ -37,7 +37,7 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
             : regionFilter
             ? `region/${regionFilter}`
             : "all";
-    const { apiResponse, isPending, errorMessage } = useFetch(
+    const { apiResponse, errorMessage } = useFetch(
         `https://restcountries.com/v3.1/${endpoint}`
     );
     function restructureArray(array: [], displayCount: number) {
@@ -91,7 +91,9 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
                                                 Object.keys(
                                                     country.languages
                                                 ).map((key: string) => [
-                                                    country.languages[key],
+                                                    country.languages[
+                                                        Number(key)
+                                                    ],
                                                 ])
                                             }
                                             currency={

@@ -5,9 +5,19 @@ import Results from "./Results";
 import QuizCountdown from "./QuizCountdown";
 import { QuizContext } from "../App";
 interface OptionsQuizContainerProps {
-    data: any[];
+    data: [
+        {
+            name: { common: string };
+        }
+    ];
     numOfOptions?: number;
     isQuiz?: boolean;
+}
+interface CorrectCountry {
+    name: { common: string };
+    flags?: {
+        png?: string;
+    };
 }
 
 const OptionsQuizContainer = ({
@@ -15,25 +25,36 @@ const OptionsQuizContainer = ({
     numOfOptions,
     isQuiz,
 }: OptionsQuizContainerProps) => {
-    const [correctCountry, setCorrectCountry] = useState({});
-    const [answerList, setAnswerList] = useState([]);
+    const [correctCountry, setCorrectCountry] = useState<CorrectCountry>({
+        name: { common: "" },
+        flags: { png: "" },
+    });
+    const [answerList, setAnswerList] = useState<
+        { name: string; isCorrect: boolean }[]
+    >([]);
     const [isAnswered, setIsAnswered] = useState(false);
     const [newQuestion, setNewQuestion] = useState(false);
     const [points, setPoints] = useState(0);
     const [numberOfQuestions, setNumberOfQuestions] = useState(1);
     const [startCountdown, setStartCountdown] = useState(true);
 
-    const { quizFinished, setQuizFinished } = useContext(QuizContext);
+    const { quizFinished, setQuizFinished } = useContext(QuizContext)!;
 
     const optionsNumber = numOfOptions ? numOfOptions : 3;
     const startCountdownTime = isQuiz ? 3 : 0;
     const quizTime = isQuiz ? 10 : 0;
     const remainingSeconds = useCountdown(quizTime + startCountdownTime);
 
-    function getRandomCountry(data: []) {
-        if (data && data.length > 0) {
+    function getRandomCountry(
+        data:
+            | [{ name: { common: string }; flags?: { png: string } }]
+            | { name: { common: string }; flags?: { png: string } }
+    ) {
+        if (Array.isArray(data)) {
             const randomNumber = Math.floor(Math.random() * data.length);
             return data[randomNumber];
+        } else {
+            return data;
         }
     }
 
@@ -45,12 +66,12 @@ const OptionsQuizContainer = ({
         });
 
         for (let i = 0; i < optionsNumber - 1; i++) {
-            let currentOption = getRandomCountry(data)?.name.common;
+            let currentOption = getRandomCountry(data).name.common;
 
             // Checks if the second option is the same as the first
             for (const option of optionsArray) {
                 while (currentOption === option.name) {
-                    currentOption = getRandomCountry(data)?.name.common;
+                    currentOption = getRandomCountry(data).name.common;
                 }
             }
             optionsArray.push({ name: currentOption, isCorrect: false });
@@ -129,23 +150,30 @@ const OptionsQuizContainer = ({
                         className="mb-10 max-h-36"
                     />
                     <div className="grid gap-3 w-full">
-                        {answerList.map((option, index) => {
-                            return (
-                                <button
-                                    key={index}
-                                    className={`  border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
-                                        isAnswered
-                                            ? option.isCorrect
-                                                ? " !bg-correct-color border-green-100 !text-secondary-color pointer-events-none"
-                                                : "!bg-incorrect-color border-red-100 !text-secondary-color pointer-events-none"
-                                            : ""
-                                    }`}
-                                    onClick={() => checkSelected(option.name)}
-                                >
-                                    {option.name}
-                                </button>
-                            );
-                        })}
+                        {answerList.map(
+                            (
+                                option: { name: string; isCorrect: boolean },
+                                index
+                            ) => {
+                                return (
+                                    <button
+                                        key={index}
+                                        className={`  border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
+                                            isAnswered
+                                                ? option.isCorrect
+                                                    ? " !bg-correct-color border-green-100 !text-secondary-color pointer-events-none"
+                                                    : "!bg-incorrect-color border-red-100 !text-secondary-color pointer-events-none"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            checkSelected(option.name)
+                                        }
+                                    >
+                                        {option.name}
+                                    </button>
+                                );
+                            }
+                        )}
                     </div>
 
                     <button

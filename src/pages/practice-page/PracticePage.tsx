@@ -35,7 +35,7 @@ const PracticePage = () => {
                 <h2 className="text-lg mb-10 font-bold">
                     What is this country?
                 </h2>
-                <OptionsQuizContainer data={apiResponse} />
+                {apiResponse && <OptionsQuizContainer data={apiResponse} />}
             </div>
             <Footer />
         </>

@@ -9,7 +9,7 @@ interface ResultsProps {
 }
 
 const Results = ({ score, isVisible }: ResultsProps) => {
-    const { setQuizStarted, setQuizFinished } = useContext(QuizContext);
+    const { setQuizStarted, setQuizFinished } = useContext(QuizContext)!;
     const [isHighScore, setIsHighScore] = useState(false);
     function getDate() {
         const today = new Date();

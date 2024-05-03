@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-const Menu = ({ isOpen, toggleMenu }) => {
+interface MenuProps {
+    isOpen: boolean;
+    toggleMenu: () => void;
+}
+
+const Menu = ({ isOpen, toggleMenu }: MenuProps) => {
     return (
         <>
             <div

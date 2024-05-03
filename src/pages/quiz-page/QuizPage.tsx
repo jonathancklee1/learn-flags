@@ -11,7 +11,7 @@ import { useGSAP } from "@gsap/react";
 const QuizPage = () => {
     const { apiResponse } = useFetch("https://restcountries.com/v3.1/all");
 
-    const { quizStarted, setQuizStarted } = useContext(QuizContext);
+    const { quizStarted, setQuizStarted } = useContext(QuizContext)!;
 
     // Gsap Animation
     useGSAP(() => {
@@ -61,7 +61,7 @@ const QuizPage = () => {
                         </button>
                     </div>
 
-                    {quizStarted && (
+                    {quizStarted && apiResponse && (
                         <OptionsQuizContainer
                             data={apiResponse}
                             numOfOptions={4}

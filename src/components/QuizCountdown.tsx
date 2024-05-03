@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { useCountdown } from "../hooks/useCountdown";
 
-const QuizCountdown = ({ setStartCountdown, startCountdownTime }) => {
+interface QuizCountdownProps {
+    setStartCountdown: React.Dispatch<React.SetStateAction<boolean>>;
+    startCountdownTime: number;
+}
+
+const QuizCountdown = ({
+    setStartCountdown,
+    startCountdownTime,
+}: QuizCountdownProps) => {
     const remainingSeconds = useCountdown(startCountdownTime);
     const [isVisible, setIsVisible] = useState(true);
     useEffect(() => {
