@@ -133,11 +133,11 @@ const OptionsQuizContainer = ({
                             return (
                                 <button
                                     key={index}
-                                    className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all duration-500 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  ${
+                                    className={`  border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full font-semibold transition-all hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color ${
                                         isAnswered
                                             ? option.isCorrect
-                                                ? " !bg-correct-color border-green-100 !text-secondary-color"
-                                                : "!bg-incorrect-color border-red-100 !text-secondary-color"
+                                                ? " !bg-correct-color border-green-100 !text-secondary-color pointer-events-none"
+                                                : "!bg-incorrect-color border-red-100 !text-secondary-color pointer-events-none"
                                             : ""
                                     }`}
                                     onClick={() => checkSelected(option.name)}
@@ -149,10 +149,10 @@ const OptionsQuizContainer = ({
                     </div>
 
                     <button
-                        className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color  font-bold text-2xl${
+                        className={`border-secondary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 transition-all duration-500  hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color font-bold text-2xl ${
                             isAnswered
-                                ? "visible opacity-100 pointer-events-auto"
-                                : "invisible opacity-0 pointer-events-none"
+                                ? "visible opacity-100"
+                                : "invisible opacity-0"
                         }`}
                         onClick={() => {
                             setNewQuestion(

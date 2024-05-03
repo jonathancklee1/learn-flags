@@ -82,7 +82,7 @@ const Results = ({ score, isVisible }: ResultsProps) => {
                     Your Score: {score}
                 </div>
                 <button
-                    className="play-again-button border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color hover:border-secondary-color focus:border-secondary-color font-bold "
+                    className="play-again-button border-primary-color text-primary-color bg-secondary-color border-2 px-5 py-3 text-center w-full mt-3 hover:bg-primary-color focus:bg-primary-color hover:text-secondary-color focus:text-secondary-color hover:border-secondary-color focus:border-secondary-color font-bold max-w-[400px"
                     onClick={() => {
                         setQuizStarted(false);
                         setQuizFinished(false);
