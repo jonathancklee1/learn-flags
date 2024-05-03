@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Navbar from "./components/Navbar";
 import LandingPage from "./pages/landing-page/LandingPage";
 import QuizPage from "./pages/quiz-page/QuizPage";
