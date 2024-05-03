@@ -54,6 +54,7 @@ const Menu = ({ isOpen, toggleMenu }: MenuProps) => {
 
                             <NavLink
                                 to="learn-flags/"
+                                end
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
