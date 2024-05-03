@@ -53,7 +53,7 @@ const Menu = ({ isOpen, toggleMenu }: MenuProps) => {
                             </svg>
 
                             <NavLink
-                                to="/"
+                                to="learn-flags/"
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
@@ -83,7 +83,7 @@ const Menu = ({ isOpen, toggleMenu }: MenuProps) => {
                             </svg>
 
                             <NavLink
-                                to="/practice"
+                                to="learn-flags/practice"
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
@@ -113,7 +113,7 @@ const Menu = ({ isOpen, toggleMenu }: MenuProps) => {
                             </svg>
 
                             <NavLink
-                                to="/quiz"
+                                to="learn-flags/quiz"
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"

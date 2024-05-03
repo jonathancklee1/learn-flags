@@ -25,7 +25,8 @@ const Navbar = () => {
                         {/* Links */}
                         <ul className="gap-8 hidden md:flex md:items-center">
                             <NavLink
-                                to="/"
+                                to="learn-flags/"
+                                end
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
@@ -37,7 +38,7 @@ const Navbar = () => {
                                 Learn
                             </NavLink>
                             <NavLink
-                                to="/practice"
+                                to="learn-flags/practice"
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
@@ -49,7 +50,7 @@ const Navbar = () => {
                                 Practice
                             </NavLink>
                             <NavLink
-                                to="/quiz"
+                                to="learn-flags/quiz"
                                 className={({ isActive, isPending }) =>
                                     isPending
                                         ? "pending"
