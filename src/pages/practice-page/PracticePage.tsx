@@ -25,7 +25,7 @@ const PracticePage = () => {
     return (
         <>
             <div
-                className="grid place-content-center min-h-[calc(100vh-var(--header-height))] text-center max-w-[1440px] mx-auto text-primary-text px-8 md:px-16 py-4"
+                className="grid place-content-center min-h-[calc(100svh-var(--header-height))] text-center max-w-[1440px] mx-auto text-primary-text px-8 md:px-16 py-4"
                 ref={practiceContainer}
             >
                 <h1 className="text-2xl font-bold mb-5">Practice here!</h1>

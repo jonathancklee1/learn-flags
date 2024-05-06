@@ -64,6 +64,7 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
             );
             setRestructuredArray(restructuredArray);
             setRestructuredArrayDisplay(restructuredArray[0]);
+            console.log(restructuredArray);
         }
         return () => {
             restructureArray;
@@ -88,13 +89,9 @@ const CardContainer = ({ searchQuery, regionFilter }: CardContainerProps) => {
                                             region={country.continents[0]}
                                             languages={
                                                 country.languages &&
-                                                Object.keys(
+                                                (Object.values(
                                                     country.languages
-                                                ).map((key: string) => [
-                                                    country.languages[
-                                                        Number(key)
-                                                    ],
-                                                ])
+                                                ) as string[])
                                             }
                                             currency={
                                                 country.currencies &&

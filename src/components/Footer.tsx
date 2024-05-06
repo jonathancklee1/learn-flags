@@ -12,7 +12,7 @@ const Footer = () => {
                         Jonathan Lee
                     </a>
                 </p>
-                <div className="size-8 rounded-full overflow-hidden">
+                <div className="size-8 rounded-full overflow-hidden flex-shrink-0">
                     <img src={avatar} alt="profile picture" />
                 </div>
             </footer>

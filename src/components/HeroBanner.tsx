@@ -53,7 +53,7 @@ const HeroBanner = () => {
     });
     return (
         <>
-            <div className="flex flex-col min-h-[calc(100vh-var(--header-height))] px-8 md:px-16 pt-4 bg-primary-color text-secondary-color relative grow">
+            <div className="flex flex-col min-h-[calc(100svh-var(--header-height))] px-8 md:px-16 pt-4 bg-primary-color text-secondary-color relative grow">
                 <div className="max-w-[1440px] mx-auto flex flex-col justify-between grow">
                     <div className="mt-10 md:mt-20">
                         <h1 className="font-bold text-2xl md:text-5xl w-3/4 mb-10 uppercase">

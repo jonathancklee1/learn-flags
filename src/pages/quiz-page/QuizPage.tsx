@@ -35,7 +35,7 @@ const QuizPage = () => {
 
     return (
         <>
-            <div className="grid place-content-center min-h-[calc(100vh-var(--header-height))] text-center mx-auto text-secondary-color px-8 py-4 bg-primary-color">
+            <div className="grid place-content-center min-h-[calc(100svh-var(--header-height))] text-center mx-auto text-secondary-color px-8 py-4 bg-primary-color">
                 <div className="relative max-w-[1440px] mx-auto">
                     <div
                         className={`transition-all duration-500 max-w-[600px] ${
